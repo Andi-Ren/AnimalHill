@@ -19,7 +19,7 @@ interface DataRepo {
 
     suspend fun addRecord(record: Record)
 
-
+    //suspend fun getAnimals(): List<Animal>
 }
 
 
@@ -44,7 +44,6 @@ class DataRepository: DataRepo {
     override suspend fun addRecord(record: Record) {
         TODO("Not yet implemented")
     }
-
 
 }
 

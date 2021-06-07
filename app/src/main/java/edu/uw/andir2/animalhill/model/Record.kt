@@ -11,3 +11,4 @@ data class Record(
     val finished: Boolean,
     val animalEarned: List<Animal>
 )
+
