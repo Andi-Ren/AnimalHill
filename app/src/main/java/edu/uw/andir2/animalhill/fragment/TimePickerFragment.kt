@@ -10,22 +10,30 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import edu.uw.andir2.animalhill.AnimalHillApplication
 import edu.uw.andir2.animalhill.R
 import edu.uw.andir2.animalhill.databinding.FragmentTimePickerBinding
+import edu.uw.andir2.animalhill.model.Record
+import edu.uw.andir2.animalhill.repository.DataRepo
+import edu.uw.andir2.animalhill.repository.RecordRepository
+import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 import kotlin.math.floor
 
 
 class TimePickerFragment: Fragment() {
     private lateinit var binding: FragmentTimePickerBinding
+    private lateinit var dataRepository: DataRepo
     private lateinit var animalHillApp: AnimalHillApplication
+    private var startUnixTS: Long = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis())
     private var timer: CountDownTimer? = null
     override fun onAttach(context: Context) {
         super.onAttach(context)
         animalHillApp = context.applicationContext as AnimalHillApplication
+        dataRepository = animalHillApp.repository
     }
 
     override fun onCreateView(
@@ -47,12 +55,13 @@ class TimePickerFragment: Fragment() {
                 picker.addOnPositiveButtonClickListener {
                     clockToTimerView()
                     initTimer(picker)
+                    startUnixTS =  TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis())
                     timer?.start()
                 }
                 picker.show(childFragmentManager, "TAG")
             }
             fabBottom.setOnClickListener {
-                cancelTimer()
+                finishTimer(false)
                 timerToClockView()
             }
         }
@@ -60,8 +69,12 @@ class TimePickerFragment: Fragment() {
         return binding.root
     }
 
-    private fun cancelTimer() {
-        // TODO: Record Failed Attempt
+    private fun finishTimer(status: Boolean) {
+        val endUnixTS:Long = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis())
+        val record = Record(null, startUnixTS, endUnixTS, status, "102")
+        lifecycleScope.launch {
+            dataRepository.addRecord(record)
+        }
         timer?.cancel()
     }
 
@@ -83,8 +96,8 @@ class TimePickerFragment: Fragment() {
                 }
 
                 override fun onFinish() {
-                    // TODO: Record Successful Attempt
-                    fabBottom.visibility = View.GONE
+                    finishTimer(true)
+                    timerToClockView()
                 }
             }
         }

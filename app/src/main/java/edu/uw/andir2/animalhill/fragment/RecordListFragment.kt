@@ -55,7 +55,7 @@ class RecordListFragment : Fragment() {
 
     private fun loadRecords() {
         lifecycleScope.launch {
-            repository.deleteRecord()
+//            repository.deleteRecord()
             repository.addRecord(Record(null, 1623025224, 1623055824, false, "102"))
             repository.addRecord(Record(null, 1623055224, 1623056224, true, "102"))
         }

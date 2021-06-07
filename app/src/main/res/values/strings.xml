@@ -3,5 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_record">Add Record</string>
+    <string name="action_add_alarm">Add Alarm</string>
+    <string name="action_timer">Timer</string>
+    <string name="action_settings">Settings</string>
 
 </resources>
