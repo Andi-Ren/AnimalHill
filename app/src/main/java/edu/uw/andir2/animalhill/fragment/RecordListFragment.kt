@@ -13,6 +13,7 @@ import edu.uw.andir2.animalhill.AnimalHillApplication
 import edu.uw.andir2.animalhill.adapter.RecordListAdapter
 import edu.uw.andir2.animalhill.databinding.FragmentRecordListBinding
 import edu.uw.andir2.animalhill.model.Record
+import edu.uw.andir2.animalhill.repository.DataRepoRoom
 import edu.uw.andir2.animalhill.repository.RecordRepository
 import edu.uw.andir2.animalhill.viewModel.RecordViewModel
 import edu.uw.andir2.animalhill.viewModel.RecordViewModelFactory
@@ -21,7 +22,9 @@ import kotlinx.coroutines.launch
 class RecordListFragment : Fragment() {
     private lateinit var binding: FragmentRecordListBinding
     private lateinit var animalHillApp: AnimalHillApplication
-    private lateinit var repository: RecordRepository
+    private lateinit var repository: DataRepoRoom
+    //private lateinit var repository: RecordRepository
+
     private val recordViewModel: RecordViewModel by viewModels {
         RecordViewModelFactory(repository)
     }
@@ -52,8 +55,9 @@ class RecordListFragment : Fragment() {
 
     private fun loadRecords() {
         lifecycleScope.launch {
-            repository.insert(Record(null, 1623055224, 1623056224, true, "102"))
-            repository.insert(Record(null, 1623025224, 1623055824, false, "102"))
+            repository.deleteRecord()
+            repository.addRecord(Record(null, 1623025224, 1623055824, false, "102"))
+            repository.addRecord(Record(null, 1623055224, 1623056224, true, "102"))
         }
     }
     //System.currentTimeMillis()

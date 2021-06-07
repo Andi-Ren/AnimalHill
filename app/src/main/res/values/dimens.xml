@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="big_padding">16dp</dimen>
+    <dimen name="title_size">60dp</dimen>
+    <dimen name="weekBtnDim">55dp</dimen>
 </resources>

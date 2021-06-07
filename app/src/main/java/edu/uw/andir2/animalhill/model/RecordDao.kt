@@ -16,7 +16,6 @@ interface RecordDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(record: Record)
 
-    // nope! You never get to delete your study data :P
-    //@Query("DELETE FROM record_table")
-    //suspend fun deleteAll()
+    @Query("DELETE FROM record_table")
+    suspend fun deleteAll()
 }
