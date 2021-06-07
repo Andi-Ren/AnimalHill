@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/recordListFragment">
+
+    <fragment
+        android:id="@+id/timePickerFragment"
+        android:name="edu.uw.andir2.animalhill.fragment.TimePickerFragment"
+        android:label="fragment_time_picker"
+        tools:layout="@layout/fragment_time_picker" />
+    <fragment
+        android:id="@+id/recordListFragment"
+        android:name="edu.uw.andir2.animalhill.fragment.RecordListFragment"
+        android:label="fragment_record_list"
+        tools:layout="@layout/fragment_record_list" />
+</navigation>
