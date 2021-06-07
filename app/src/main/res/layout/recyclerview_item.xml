@@ -14,7 +14,7 @@
         android:id="@+id/ivSongPic"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/sheep" />
     <!--define scalable image-text pairs -->
     <!-- A vertical linear layout within horizontal linear layout-->
     <LinearLayout

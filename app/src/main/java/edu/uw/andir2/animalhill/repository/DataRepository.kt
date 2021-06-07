@@ -16,9 +16,11 @@ import retrofit2.http.GET
 //}
 
 interface DataRepo {
-    suspend fun getRecords(): Flow<List<Record>>
+    fun allRecords(): Flow<List<Record>>
 
     suspend fun addRecord(record: Record)
+
+    suspend fun deleteRecord()
 
     //suspend fun getAnimals(): List<Animal>
 }
@@ -26,7 +28,7 @@ interface DataRepo {
 
 class DataRepoRoom(private val recordDao: RecordDao): DataRepo {
 
-    override suspend fun getRecords(): Flow<List<Record>> {
+    override fun allRecords(): Flow<List<Record>> {
         return recordDao.getAllRecords()
     }
 
@@ -34,6 +36,10 @@ class DataRepoRoom(private val recordDao: RecordDao): DataRepo {
     @WorkerThread
     override suspend fun addRecord(record: Record) {
         recordDao.insert(record)
+    }
+
+    override suspend fun deleteRecord() {
+        recordDao.deleteAll()
     }
 
 }
