@@ -1,5 +1,6 @@
 package edu.uw.andir2.animalhill.adapter
 
+import android.graphics.Color
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -37,7 +38,13 @@ class RecordListAdapter : ListAdapter<Record, RecordListAdapter.RecordViewHolder
             if (record != null) {
                 recordStartTime.text = getDateTime(record.startTime)
                 recordEndTime.text = getDateTime(record.endTime)
-                recordStatus.text = record.status.toString()
+                if(record.status){
+                    recordStatus.text = "Finished!!"
+                    recordStatus.setTextColor(Color.parseColor("#228B22"))
+                } else {
+                    recordStatus.text = "Quit.. :("
+                    recordStatus.setTextColor(Color.parseColor("#B22222"))
+                }
             }
 
         }
