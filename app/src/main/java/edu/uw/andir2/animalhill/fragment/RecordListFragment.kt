@@ -31,7 +31,6 @@ class RecordListFragment : Fragment() {
     }
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
         animalHillApp = context.applicationContext as AnimalHillApplication
         repository = animalHillApp.repository
     }
@@ -39,12 +38,12 @@ class RecordListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentRecordListBinding.inflate(inflater)
         loadRecords()
         loadAnimals()
         val adapter = RecordListAdapter()
-        recordViewModel.allRecords.observe(viewLifecycleOwner, Observer { records ->
+        recordViewModel.allRecords.observe(viewLifecycleOwner, { records ->
             // Update the cached copy of the words in the adapter.
             records?.let { adapter.submitList(it) }
         })

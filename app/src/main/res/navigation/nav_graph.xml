@@ -20,4 +20,21 @@
         android:name="edu.uw.andir2.animalhill.fragment.ReminderFragment"
         android:label="fragment_reminder"
         tools:layout="@layout/fragment_reminder" />
+    <action
+        android:id="@+id/action_global_recordListFragment"
+        app:destination="@id/recordListFragment" />
+    <action
+        android:id="@+id/action_global_reminderFragment"
+        app:destination="@id/reminderFragment" />
+    <action
+        android:id="@+id/action_global_timePickerFragment"
+        app:destination="@id/timePickerFragment" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="edu.uw.andir2.animalhill.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment" />
 </navigation>
