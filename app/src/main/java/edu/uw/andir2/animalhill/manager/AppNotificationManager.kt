@@ -11,6 +11,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.work.WorkManager
 import edu.uw.andir2.animalhill.AnimalHillApplication
 import edu.uw.andir2.animalhill.R
+import edu.uw.andir2.animalhill.activity.FarmActivity
 import edu.uw.andir2.animalhill.fragment.TimePickerFragment
 import kotlin.random.Random
 
@@ -33,7 +34,7 @@ class AppNotificationManager(private val context: Context) {
         }
 
         // Define the intent or action you want when user taps on notification
-        val intent = Intent(context, TimePickerFragment::class.java).apply {
+        val intent = Intent(context, FarmActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT) // dont forget to add PendingIntent.FLAG_UPDATE_CURRENT to send data over
