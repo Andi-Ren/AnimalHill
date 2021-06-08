@@ -37,7 +37,7 @@ class FarmActivity : AppCompatActivity() {
     override fun run() {
       animals.forEach{
         //animHandler.postDelayed(this, ((0..2).random() * 1000L))
-        onStartAnimation(it, location[animals.indexOf(it) + 1])
+        onStartAnimation(it, location[animals.indexOf(it) + 1], "cat")
       }
       //onStartAnimation(rocket, location[0])
       animHandler.postDelayed(this, ((3..5).random() * 1000L))
@@ -121,11 +121,12 @@ class FarmActivity : AppCompatActivity() {
     //animHandler.post(updateTextTask)
   }
 
-  fun onStartAnimation(obj: ImageView, location: Array<Float>) {
+  fun onStartAnimation(obj: ImageView, location: Array<Float>, animalName: String) {
     var moveCommand = ""
     var axis = (1..2).random()
     val dist = (0..2).random()
     val speed = (2..3).random()
+    var animalDirection = "down"
     var direction =  (1 - (0..1).random() * 2) * 100f * dist
     //var startpoint = 0f
     //this is the index used for updating the x or y position of the view
@@ -134,11 +135,21 @@ class FarmActivity : AppCompatActivity() {
     if (axis == 2) {
       moveCommand = "translationY"
       resetindex = 1
+      if (direction < 0) {
+        animalDirection = "up"
+      }
       //obj.setImageResource(R.drawable.doge)
     } else {
       //obj.setImageResource(R.drawable.rocket)
       moveCommand = "translationX"
+      if (direction < 0) {
+        animalDirection = "left"
+      } else if (direction > 0){
+        animalDirection = "right"
+      }
     }
+
+
 
     /*
     direction = convertDpToPixel(-50F)
@@ -147,7 +158,9 @@ class FarmActivity : AppCompatActivity() {
     axis = 1
     */
 
+    val drawable = "R.drawable.${animalName}_${animalDirection}"
 
+    println(drawable)
     //the predicted new location of the animal
     var newPosition = location[resetindex] + direction
 
