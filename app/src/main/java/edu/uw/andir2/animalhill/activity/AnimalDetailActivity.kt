@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import edu.uw.andir2.animalhill.AnimalHillApplication
 import edu.uw.andir2.animalhill.databinding.ActivityAnimalDetailBinding
 
 const val NAME = "name"
