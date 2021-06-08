@@ -3,6 +3,7 @@ package edu.uw.andir2.animalhill.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import edu.uw.andir2.animalhill.databinding.ActivityAnimalDetailBinding
 
@@ -28,5 +29,15 @@ class AnimalDetailActivity : AppCompatActivity(){
             val currentName = intent.getStringExtra(NAME)
             name.text = currentName
         }
+
+        var actionBar = supportActionBar
+        actionBar!!.title = "Animal Detail"
+        actionBar.setDisplayHomeAsUpEnabled(true)
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
 }
