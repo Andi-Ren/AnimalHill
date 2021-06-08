@@ -20,7 +20,6 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.transition.TransitionManager
-import coil
 import com.google.android.material.transition.MaterialFadeThrough
 import edu.uw.andir2.animalhill.R
 import edu.uw.andir2.animalhill.databinding.ActivityFarmBinding
