@@ -7,13 +7,18 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import edu.uw.andir2.animalhill.AnimalHillApplication
 import edu.uw.andir2.animalhill.databinding.ActivityAnimalDetailBinding
+import coil.load
 
 const val NAME = "name"
+const val DESC = "desc"
+const val URL = "url"
 
-fun navigateToDetailActivity(context: Context, name: String) {
+fun navigateToDetailActivity(context: Context, name: String, desc: String, url: String) {
     val intent = Intent(context, AnimalDetailActivity::class.java)
     val bundle = Bundle().apply {
         putString(NAME, name)
+        putString(DESC, desc)
+        putString(URL, url)
     }
     intent.putExtras(bundle)
     context.startActivity(intent)
@@ -28,7 +33,11 @@ class AnimalDetailActivity : AppCompatActivity(){
 
         with(binding) {
             val currentName = intent.getStringExtra(NAME)
+            val currentDesc = intent.getStringExtra(DESC)
+            val currentURL = intent.getStringExtra(URL)
             name.text = currentName
+            description.text = currentDesc
+            animalImg.load(currentURL)
         }
 
         var actionBar = supportActionBar

@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Animal List"
-        android:textSize="30dp"
+        android:textSize="40dp"
+        android:fontFamily="@font/vt323"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +23,7 @@
         android:id="@+id/constraintLayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title">
@@ -31,21 +32,22 @@
             android:id="@+id/animal1"
             android:layout_width="100dp"
             android:layout_height="130dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="#2F009688"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/animalPic1"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_marginTop="11dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView1"
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="15dp"
@@ -62,22 +64,23 @@
             android:id="@+id/animal2"
             android:layout_width="100dp"
             android:layout_height="130dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="25dp"
+            android:background="#2F009688"
             app:layout_constraintStart_toEndOf="@+id/animal1"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/animalPic2"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_marginTop="11dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="15dp"
@@ -92,23 +95,24 @@
             android:id="@+id/animal3"
             android:layout_width="100dp"
             android:layout_height="130dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="25dp"
+            android:background="#2F009688"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/animal2"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/animalPic3"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_marginTop="11dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="15dp"
@@ -118,6 +122,74 @@
                 app:layout_constraintTop_toBottomOf="@+id/animalPic3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/animal4"
+            android:layout_width="100dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="30dp"
+            android:background="#2F009688"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/animal1"
+            app:layout_constraintVertical_bias="1.0">
+
+            <ImageView
+                android:id="@+id/animalPic4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="11dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/animalPic4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/animal5"
+            android:layout_width="100dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="24dp"
+            android:background="#2F009688"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/animal4"
+            app:layout_constraintTop_toBottomOf="@+id/animal2"
+            app:layout_constraintVertical_bias="1.0">
+
+            <ImageView
+                android:id="@+id/animalPic5"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="11dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/animalPic5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -130,7 +202,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+
+
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        app:layout_constraintBottom_toBottomOf="parent"-->
