@@ -1,4 +1,4 @@
-package edu.uw.andir2.animalhill
+package edu.uw.andir2.animalhill.activity
 
 import android.animation.Animator
 import android.animation.ObjectAnimator
@@ -12,6 +12,7 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import edu.uw.andir2.animalhill.R
 
 
 class FarmActivity : AppCompatActivity() {
@@ -145,6 +146,7 @@ class FarmActivity : AppCompatActivity() {
     resetindex = 0
     axis = 1
     */
+
 
     //the predicted new location of the animal
     var newPosition = location[resetindex] + direction
