@@ -9,17 +9,13 @@
         android:title="@string/action_add_alarm"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/app_bar_timer"
-        android:icon="@drawable/ic_baseline_timer_24"
-        android:title="@string/action_timer"
+        android:id="@+id/app_bar_record_list"
+        android:icon="@drawable/ic_baseline_history_24"
+        android:title="@string/action_record_list"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/app_bar_farm"
+        android:id="@+id/app_bar_animal_list"
         android:icon="@drawable/ic_baseline_pets_24"
-        android:title="Farm"
+        android:title="@string/action_animal_list"
         app:showAsAction="always"/>
-    <item
-        android:id="@+id/app_bar_settings"
-        android:title="@string/action_settings"
-        app:showAsAction="never"/>
 </menu>

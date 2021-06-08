@@ -3,4 +3,5 @@
     <dimen name="big_padding">16dp</dimen>
     <dimen name="title_size">60dp</dimen>
     <dimen name="weekBtnDim">55dp</dimen>
+    <dimen name="elevation_top">10dp</dimen>
 </resources>

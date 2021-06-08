@@ -1,18 +1,17 @@
 package edu.uw.andir2.animalhill.fragment
 
 import android.content.Context
-import android.opengl.Visibility
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
+import androidx.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
+import com.google.android.material.transition.MaterialFade
 import edu.uw.andir2.animalhill.AnimalHillApplication
 import edu.uw.andir2.animalhill.R
 import edu.uw.andir2.animalhill.databinding.FragmentTimePickerBinding
@@ -30,6 +29,7 @@ class TimePickerFragment: Fragment() {
     private lateinit var animalHillApp: AnimalHillApplication
     private var startUnixTS: Long = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis())
     private var timer: CountDownTimer? = null
+    private var appbarRef: View? = null
     override fun onAttach(context: Context) {
         super.onAttach(context)
         animalHillApp = context.applicationContext as AnimalHillApplication
@@ -40,8 +40,10 @@ class TimePickerFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentTimePickerBinding.inflate(inflater)
+        appbarRef = container?.rootView?.findViewById(R.id.app_bar_container)
+        TransitionManager.beginDelayedTransition(binding.root, MaterialFade())
         with(binding) {
             val clockFormat = TimeFormat.CLOCK_24H
             progressBar.setOnClickListener {
@@ -53,10 +55,9 @@ class TimePickerFragment: Fragment() {
                     .build()
 
                 picker.addOnPositiveButtonClickListener {
-                    clockToTimerView()
-                    initTimer(picker)
                     startUnixTS =  TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis())
-                    timer?.start()
+                    clockToTimerView()
+                    startTimer(picker)
                 }
                 picker.show(childFragmentManager, "TAG")
             }
@@ -70,6 +71,7 @@ class TimePickerFragment: Fragment() {
     }
 
     private fun finishTimer(status: Boolean) {
+        appbarRef?.visibility = View.VISIBLE
         val endUnixTS:Long = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis())
         val record = Record(null, startUnixTS, endUnixTS, status, "102")
         lifecycleScope.launch {
@@ -78,8 +80,9 @@ class TimePickerFragment: Fragment() {
         timer?.cancel()
     }
 
-    private fun initTimer(picker: MaterialTimePicker) {
+    private fun startTimer(picker: MaterialTimePicker) {
         with(binding) {
+            appbarRef?.visibility = View.GONE
             val newHour: Int = picker.hour
             val newMinute: Int = picker.minute
             val totalS = (newHour * 60 + newMinute) * 60
@@ -90,7 +93,7 @@ class TimePickerFragment: Fragment() {
 
             timer = object : CountDownTimer(totalMillis, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
-                    val timeStr = formatTimeStr(millisUntilFinished);
+                    val timeStr = formatTimeStr(millisUntilFinished)
                     tvCountDown.text = timeStr
                     progressBar.incrementProgressBy(1)
                 }
@@ -99,7 +102,7 @@ class TimePickerFragment: Fragment() {
                     finishTimer(true)
                     timerToClockView()
                 }
-            }
+            }.start()
         }
     }
 
