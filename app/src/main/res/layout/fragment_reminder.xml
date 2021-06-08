@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="@dimen/big_padding"
-    tools:context=".fragment.TimePickerFragment">
+    tools:context=".fragment.ReminderFragment">
 
 
     <TextView
@@ -115,21 +115,52 @@
         app:layout_constraintBottom_toBottomOf="@id/btnMonday"/>
 
     <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/ReminderBarrier"
+        android:id="@+id/DaysScrollerrBarrier"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="btnSunday" />
 
     <TimePicker
-        android:id="@+id/datePicker1"
+        android:id="@+id/datePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:timePickerMode="spinner"
-        app:layout_constraintTop_toBottomOf="@id/ReminderBarrier"
+        app:layout_constraintTop_toBottomOf="@id/DaysScrollerrBarrier"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.3"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/ScrollerSaveBarrier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="datePicker" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:textSize="20dp"
+        android:fontFamily="@font/vt323"
+        android:enabled="true"
+        android:backgroundTint="@color/cyan"
+        app:layout_constraintTop_toBottomOf="@id/ScrollerSaveBarrier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/btnTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test me"
+        android:textSize="20dp"
+        android:fontFamily="@font/vt323"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
