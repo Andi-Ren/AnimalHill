@@ -8,11 +8,26 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.DisplayMetrics
+import android.util.Log
+import android.view.MenuItem
+import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
+import androidx.navigation.findNavController
+import androidx.transition.TransitionManager
+import coil
+import com.google.android.material.transition.MaterialFadeThrough
 import edu.uw.andir2.animalhill.R
+import edu.uw.andir2.animalhill.databinding.ActivityFarmBinding
+import edu.uw.andir2.animalhill.fragment.RecordListFragmentDirections
+import edu.uw.andir2.animalhill.fragment.ReminderFragmentDirections
+import edu.uw.andir2.animalhill.fragment.TimePickerFragmentDirections
+
 
 
 class FarmActivity : AppCompatActivity() {
@@ -30,6 +45,9 @@ class FarmActivity : AppCompatActivity() {
   //change this to read a list of locations from data repo-
   var location = mutableListOf(arrayOf(0f,0f))
 
+
+  private lateinit var binding: ActivityFarmBinding
+  private val navController: NavController by lazy { findNavController(R.id.navHost)}
 
   private val updateTextTask = object : Runnable {
     override fun run() {
@@ -74,6 +92,18 @@ class FarmActivity : AppCompatActivity() {
     }
   }
 
+  fun hideAnimals() {
+    for (animal in animals) {
+      animal.visibility = View.GONE
+    }
+  }
+
+  fun showAnimals() {
+    for (animal in animals) {
+      animal.visibility = View.VISIBLE
+    }
+  }
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
@@ -82,11 +112,33 @@ class FarmActivity : AppCompatActivity() {
     } catch (e: NullPointerException) {
     }
 
+    binding = ActivityFarmBinding.inflate(layoutInflater).apply {
+      setContentView(root)
+    }
+    with(binding) {
+      navController.setGraph(R.navigation.nav_graph)
+      bottomAppBar.setOnMenuItemClickListener { item ->
+        handleMenuItemPressed(item)
+      }
+
+      fab.setOnClickListener {
+        val materialFade = MaterialFadeThrough().apply { duration = 250L }
+        TransitionManager.beginDelayedTransition(dial, materialFade)
+        dial.visibility = if (dial.isVisible) View.GONE else View.VISIBLE
+      }
+
+      fabFarm.setOnClickListener { navigateToFarm() }
+
+      fabTimer.setOnClickListener {
+        navController.navigate(TimePickerFragmentDirections.actionGlobalTimePickerFragment())
+        navHostContainer.visibility = View.VISIBLE
+      }
+    }
+
     val displayMetrics = DisplayMetrics()
     screenHeight = displayMetrics.heightPixels.toFloat()
     screenWidth = displayMetrics.widthPixels.toFloat()
 
-    setContentView(R.layout.activity_farm)
     farmBoundary = arrayOf(arrayOf(convertDpToPixel(25f), convertDpToPixel(365f)),arrayOf(convertDpToPixel(150f), convertDpToPixel(500f)))
     container = findViewById(R.id.container)
 
@@ -208,4 +260,32 @@ class FarmActivity : AppCompatActivity() {
 
   fun Context.convertDpToPixel(dp: Number) = dp.toFloat() * (resources.displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT)
   //fun Context.convertPixelToDp(px: Number) = px.toFloat() / (resources.displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT)
+
+  private fun handleMenuItemPressed(item: MenuItem): Boolean {
+    Log.i("Item Selected", item.toString())
+
+    when (item.itemId) {
+      R.id.app_bar_record_list -> {
+        navigateExceptFarm(RecordListFragmentDirections.actionGlobalRecordListFragment())
+      }
+      R.id.app_bar_animal_list -> {
+        navigateExceptFarm(AnimalListActivityDirections.actionGlobalAnimalListActivity())
+      }
+      R.id.app_bar_reminder -> {
+        navigateExceptFarm(ReminderFragmentDirections.actionGlobalReminderFragment())
+      }
+    }
+    return true
+  }
+
+  private fun navigateToFarm() {
+    showAnimals()
+    binding.navHostContainer.visibility = View.GONE
+  }
+  private fun navigateExceptFarm(dest : NavDirections) {
+    hideAnimals()
+    navController.navigate(dest)
+    binding.navHostContainer.visibility = View.VISIBLE
+  }
 }
+
