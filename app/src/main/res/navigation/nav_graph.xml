@@ -37,4 +37,12 @@
     <action
         android:id="@+id/action_global_homeFragment"
         app:destination="@id/homeFragment" />
+    <activity
+        android:id="@+id/animalListActivity"
+        android:name="edu.uw.andir2.animalhill.activity.AnimalListActivity"
+        android:label="activity_animal_list"
+        tools:layout="@layout/activity_animal_list" />
+    <action
+        android:id="@+id/action_global_animalListActivity"
+        app:destination="@id/animalListActivity" />
 </navigation>

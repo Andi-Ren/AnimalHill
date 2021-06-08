@@ -2,6 +2,7 @@ package edu.uw.andir2.animalhill.activity
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
