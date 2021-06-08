@@ -43,13 +43,27 @@ class AnimalListActivity : AppCompatActivity(){
                 val desc3 = animal3.getString("description")
                 val url3 = animal3.getString("imgURL")
 
+                val animal4 = jsonArray.getJSONObject(3)
+                val name4 = animal4.getString("name")
+                val desc4 = animal4.getString("description")
+                val url4 = animal4.getString("imgURL")
+
+                val animal5 = jsonArray.getJSONObject(4)
+                val name5 = animal5.getString("name")
+                val desc5 = animal5.getString("description")
+                val url5 = animal5.getString("imgURL")
+
                 textView1.text = "$name1"
                 textView2.text = "$name2"
                 textView3.text = "$name3"
+                textView4.text = "$name4"
+                textView5.text = "$name5"
 
                 animalPic1.load(url1)
                 animalPic2.load(url2)
                 animalPic3.load(url3)
+                animalPic4.load(url4)
+                animalPic5.load(url5)
 //                }
 
                 animalPic1.setOnClickListener {
@@ -64,13 +78,13 @@ class AnimalListActivity : AppCompatActivity(){
                     navigateToDetailActivity(this@AnimalListActivity, name3, desc3, url3)
                 }
 
-//                animalPic4.setOnClickListener {
-//                    navigateToDetailActivity(this@AnimalListActivity, name4, desc4, url4)
-//                }
-//
-//                animalPic5.setOnClickListener {
-//                    navigateToDetailActivity(this@AnimalListActivity, name4, desc4, url4)
-//                }
+                animalPic4.setOnClickListener {
+                    navigateToDetailActivity(this@AnimalListActivity, name4, desc4, url4)
+                }
+
+                animalPic5.setOnClickListener {
+                    navigateToDetailActivity(this@AnimalListActivity, name5, desc5, url5)
+                }
 
             } catch (e: JSONException) {
                 e.printStackTrace()

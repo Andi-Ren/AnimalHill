@@ -22,13 +22,13 @@
             "id": 4,
             "name": "Wolf",
             "description": "This is a wolf.",
-            "imgURL": ""
+            "imgURL": "https://raw.githubusercontent.com/Andi-Ren/AnimalHill/coco/app/src/main/res/drawable/wolf_down.png"
         },
         {
             "id": 5,
             "name": "Dog",
             "description": "This is a dog.",
-            "imgURL": ""
+            "imgURL": "https://raw.githubusercontent.com/Andi-Ren/AnimalHill/coco/app/src/main/res/drawable/dog_down.png"
         }
     ]
 }
