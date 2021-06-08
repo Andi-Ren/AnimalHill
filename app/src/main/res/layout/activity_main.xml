@@ -25,7 +25,11 @@
         android:src="@drawable/ic_baseline_clear_24"
         app:layout_anchor="@id/bottom_app_bar" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
+    <FrameLayout
+        android:id="@+id/navHostContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
     <fragment
         android:id="@+id/navHost"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -34,5 +38,6 @@
         app:defaultNavHost="true"
         android:visibility="gone"
         app:navGraph="@navigation/nav_graph" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

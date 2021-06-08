@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import edu.uw.andir2.animalhill.R
 
-class homeFragment : Fragment() {
+class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
