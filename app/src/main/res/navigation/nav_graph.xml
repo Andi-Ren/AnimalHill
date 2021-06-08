@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_record_list" />
     <fragment
         android:id="@+id/reminderFragment"
-        android:name="edu.uw.andir2.animalhill.ReminderFragment"
+        android:name="edu.uw.andir2.animalhill.fragment.ReminderFragment"
         android:label="fragment_reminder"
         tools:layout="@layout/fragment_reminder" />
 </navigation>
