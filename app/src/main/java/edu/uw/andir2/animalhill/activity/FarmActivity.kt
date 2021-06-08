@@ -27,6 +27,8 @@ import edu.uw.andir2.animalhill.fragment.RecordListFragmentDirections
 import edu.uw.andir2.animalhill.fragment.ReminderFragmentDirections
 import edu.uw.andir2.animalhill.fragment.TimePickerFragmentDirections
 
+import coil.load
+
 
 
 class FarmActivity : AppCompatActivity() {
@@ -129,7 +131,7 @@ class FarmActivity : AppCompatActivity() {
       fabFarm.setOnClickListener { navigateToFarm() }
 
       fabTimer.setOnClickListener {
-        navController.navigate(TimePickerFragmentDirections.actionGlobalTimePickerFragment())
+        navigateExceptFarm(TimePickerFragmentDirections.actionGlobalTimePickerFragment())
         navHostContainer.visibility = View.VISIBLE
       }
     }
@@ -137,12 +139,12 @@ class FarmActivity : AppCompatActivity() {
     val displayMetrics = DisplayMetrics()
     screenHeight = displayMetrics.heightPixels.toFloat()
     screenWidth = displayMetrics.widthPixels.toFloat()
-
     farmBoundary = arrayOf(arrayOf(convertDpToPixel(25f), convertDpToPixel(365f)),arrayOf(convertDpToPixel(150f), convertDpToPixel(500f)))
     container = findViewById(R.id.container)
 
     animHandler = Handler(Looper.getMainLooper())
     populateAnimals()
+
   }
 
   override fun onPause() {

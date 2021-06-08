@@ -2,10 +2,12 @@ package edu.uw.andir2.animalhill.activity
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import edu.uw.andir2.animalhill.databinding.ActivityAnimalDetailBinding
+import coil.load
 
 const val NAME = "name"
 
@@ -28,6 +30,9 @@ class AnimalDetailActivity : AppCompatActivity(){
         with(binding) {
             val currentName = intent.getStringExtra(NAME)
             name.text = currentName
+            animalImg.load("https://raw.githubusercontent.com/Andi-Ren/AnimalHill/coco/app/src/main/res/drawable/pig_down.png") {
+
+            }
         }
 
         var actionBar = supportActionBar
