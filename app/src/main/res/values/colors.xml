@@ -9,6 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="light_orange">#FFCC80</color>
     <color name="dark_orange">#D97218</color>
+    <color name="cyan">#91D2D9</color>
+    <color name="disabled_gray">#808080</color>
+
+
+
 
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
